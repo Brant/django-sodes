@@ -1,0 +1,27 @@
+[
+	{
+          "pk": 1, 
+          "model": "sodes.category", 
+          "fields": {
+               "name": "Cat", 
+               "slug": "cat"
+          }
+    },
+	{
+          "pk": 1, 
+          "model": "sodes.sode", 
+          "fields": {
+               "category": 1, 
+               "content": "Heyo, yoyo. Weez be jammin'.", 
+               "title": "GaspCon", 
+               "image": "", 
+               "chronology": "1", 
+               "duration": "38:51", 
+               "mp3": "global/podcasts/sode.mp3", 
+               "date": "2009-12-07 01:00:00", 
+               "ogg": "", 
+               "slug": "gaspcon", 
+               "blurb": "Heyo bitches"
+          }
+     }
+]

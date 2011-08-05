@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% load sode_tags %}
+
+{% block title %}Podcasts | {{block.super}}{% endblock %}
+
+
+{% block side %}
+	<aside class="extra-nav">
+		<h1>Archives</h1>
+		{% podcast_archives %}
+	</aside>
+{% endblock %}

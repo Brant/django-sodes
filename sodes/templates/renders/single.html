@@ -1,0 +1,22 @@
+{% load sode_tags %}
+
+<article class="sode">
+	
+	<header>
+		
+		<hgroup>
+			<h1>{{ episode.title }}</h1>
+			<h2>{{ episode.category }}{{ episode.chronology }}</h2>	
+		</hgroup>
+		
+		<p class="sode-date">{{ episode.date|date:"F j, Y" }}</p>
+		
+	</header>
+	
+	<p class="sode-mp3"><a href="{{ episode.mp3.url }}">Download mp3</a></p>
+	
+	{% autoescape off %}
+		{{ episode.content }}
+	{% endautoescape %}
+	
+</article>

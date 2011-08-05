@@ -1,0 +1,12 @@
+{% extends "sodes/base.html" %}
+
+
+{% load sode_tags %}
+
+
+{% block title %}{{ episode.title }} | {{ block.super }}{% endblock %}
+
+
+{% block content %}
+	{% render_podcast single episode SITE_URL %}
+{% endblock %}

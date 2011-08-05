@@ -1,0 +1,8 @@
+{% if archives %}
+	<ul>
+		{% for archive in archives %}
+			{% url sodes.views.archive year=archive|date:"Y", month=archive|date:"m" as archive_url %}
+			<li{% if archive_url == request.path %} class='cur'{% endif %}><a href='{{archive_url}}'>{{archive|date:"F Y"}}</a></li>
+		{% endfor %}
+	</ul>
+{% endif %}

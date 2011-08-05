@@ -1,0 +1,30 @@
+{% extends "sodes/base.html" %}
+
+{% load sode_tags %}
+
+
+{% block content %}
+	
+	{% for episode in episodes.object_list %}
+		{% render_podcast short %}
+	{% endfor %}
+	
+	
+	<section class="paginator">
+		<span class="step-links">
+			{% if episodes.has_previous %}
+				{% if episodes.previous_page_number != 1 %}
+		            <a class="paginator-newer" href="?page={{ episodes.previous_page_number }}">Newer Episodes</a>
+				{% else %}
+					<a class="paginator-newer" href="{% url sodes.views.index %}">Newer Episodes</a>
+				{% endif %}
+	        {% endif %}
+			
+	        {% if episodes.has_next %}
+	            <a class="paginator-older" href="?page={{ episodes.next_page_number }}">Older Episodes</a>
+	        {% endif %}
+	    </span>
+	</section>
+	
+	
+{% endblock %}

@@ -1,0 +1,6 @@
+<article class="sode">
+	<h1><a href="{{ episode.get_absolute_url }}">{{ episode.title }}</a></h1>
+	<p class="sode-date">{{ episode.date|date:"F j, Y" }}</p>
+	<p class="sode-file"><a href="{{ episode.mp3.url }}">Download mp3</a></p>
+	<p>{{ episode.blurb }}</p>
+</article>
