@@ -52,7 +52,7 @@ setup(
 
     author = 'Brant Steen',
     author_email = 'brant.steen@gmail.com',
-
+    zip_safe = False,
     packages = packages,
     data_files = data_files,
 
