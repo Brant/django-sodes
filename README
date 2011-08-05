@@ -1,0 +1,62 @@
+URLS
+---------------
+
+By default, urls for sodes render like this:
+
+^<category>/<chronology>/
+
+For example, it is recommended that the basic category created is "episode". Thus, you'll end up with:
+^episode/1/
+^episode/2/
+^episode/3/
+
+...etc
+
+
+CONFIGURATIONS
+----------------
+
+Any number of these can be put into your settings. Default values will be used if they are not present.
+
+SODES_SLUG_URLS (default=False) : Use slugs in the urls, instead of the default urlconf
+SODES_USE_PAGINATOR (default = True) : Use a paginator for the episode index(s)
+SODES_PER_PAGE (default = 5) : How many per page, assuming SODES_USE_PAGINATOR is True
+
+ADMIN PANEL CONFIGURATIONS
+----------------------------
+
+Any number of these can be put into your settings. Default values will be used if they are not present.
+
+The purpose of these is to keep the admin panel as clean as possible.
+
+SODES_USE_OGG (default = False) : Field for an additional upload field for the episode audio
+SODES_CUSTOM_SLUGS (default = False) : field for the auto-generated slug field, allowing for customization
+SODES_USE_IMAGES (default = True) : Field for attaching an image to an episode
+SODES_SHOW_DURATION (default = False) : Field showing the auto-generated duration
+
+
+TEMPLATES
+----------------
+There are essentially 3 ways to render a given podcast:
+
+1) short
+2) single
+3) featured
+
+Calling these rendered sodes is done with the {% render_podcast %} template tag:
+
+{% render_podcast <render_type> <var_in_context> [<extra_context_vars>] %}
+
+render_type:
+	short | featured | single
+	default: single
+	
+var_in_context:
+	default: episode
+	
+extra_context_vars:
+	automatically grabs: MEDIA_URL, request
+	
+templates:
+	"sodes/renders/(single|short|featured).html"
+	
