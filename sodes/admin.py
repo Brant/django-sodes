@@ -7,7 +7,7 @@ from sodes.models import *
 from sodes.util import getters
     
 class SodeAdmin(admin.ModelAdmin):
-    fields = [ "title", "date", "category", "chronology", "blurb", "content", "mp3" ]
+    fields = [ "category", "chronology", "title", "date", "blurb", "content", "mp3" ]
     
     if getters.use_ogg():
         fields.append("ogg")
