@@ -19,6 +19,7 @@ class URLConfTestCase(TestCase):
     Test our "settingified" urls
     """
     fixtures = ["sodes_tests.json"]
+    urls = "sodes.urls"
     
     def setUp(self):
         """
