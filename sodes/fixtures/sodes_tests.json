@@ -1,6 +1,24 @@
 [
 	{
           "pk": 1, 
+          "model": "auth.user", 
+          "fields": {
+               "username": "testuser", 
+               "first_name": "", 
+               "last_name": "", 
+               "is_active": true, 
+               "is_superuser": true, 
+               "is_staff": true, 
+               "last_login": "2011-04-29 08:05:12", 
+               "groups": [], 
+               "user_permissions": [], 
+               "password": "sha1$0ba87$6d6d41567a68467f66a762a05aceb9bfc26144e7", 
+               "email": "admin@admin.admin", 
+               "date_joined": "2011-04-29 08:03:45"
+          }
+    },
+	{
+          "pk": 1, 
           "model": "sodes.category", 
           "fields": {
                "name": "Cat", 

@@ -4,22 +4,56 @@ when you run "manage.py test".
 
 Replace this with more appropriate tests for your application.
 """
+from datetime import datetime, timedelta
 
 from django.core.urlresolvers import reverse, NoReverseMatch
 from django.test.client import Client
 from django.test import TestCase
 from django.conf import settings
+from django.contrib.auth.models import User
+from django.http import Http404
 
 from sodes.models import Sode
 from sodes.templatetags import sode_tags as tags
 from sodes.util import getters
+
+class ViewTestCase(TestCase):
+    """
+    Test things in the views
+    """
+    fixtures = ["sodes_tests.json"]
+    
+    def setUp(self):
+        """
+        Set some things up
+        """
+        self.sode = Sode.objects.get(pk=1)
+        self.client = Client()
+        self.test_user = User.objects.get(pk=1)
+        
+    def test_superuser_view_unpublished(self):
+        """
+        Superusers shoudl be able to view unpublished episodes
+        """
+        self.sode.date = datetime.now() + timedelta(days=1)
+        self.sode.save()
+        self.client.login(username=self.test_user.username, password="asdf")
+        resp = self.client.get(self.sode.get_absolute_url())
+        self.assertEquals(resp.status_code, 200)
+        self.test_user.is_superuser = False
+        self.test_user.save()
+        resp = self.client.get(self.sode.get_absolute_url())
+        self.assertEquals(resp.status_code, 404)
+        
+        
+        
 
 class URLConfTestCase(TestCase):
     """
     Test our "settingified" urls
     """
     fixtures = ["sodes_tests.json"]
-    urls = "sodes.urls"
+#    urls = "sodes.urls"
     
     def setUp(self):
         """
