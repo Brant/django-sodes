@@ -49,13 +49,25 @@ def index(request, template_name="sodes/index.html"):
 def single_by_category(request, category, chronology, template_name="sodes/single.html"):
     """
     Single episode, uses category/chronology based URL conf
-    """ 
-    episode = get_object_or_404(Sode, category__slug=category, chronology=chronology, mp3__isnull=False, date__lte=datetime.now())
+    
+    Superusers can view unpublished episodes
+    """
+    if request.user.is_superuser:
+        episode = get_object_or_404(Sode, category__slug=category, chronology=chronology, mp3__isnull=False)
+    else:
+        episode = get_object_or_404(Sode, category__slug=category, chronology=chronology, mp3__isnull=False, date__lte=datetime.now())
+        
     return render_to_response(template_name, {"episode": episode}, context_instance=RequestContext(request))
 
 def single_by_slug(request, slug, template_name="sodes/single.html"):
     """
     Single episode, uses slug-based URL conf
+    
+    Superusers can view unpublished episodes
     """
-    episode = get_object_or_404(Sode, slug=slug, mp3__isnull=False, date__lte=datetime.now())
+    if request.user.is_superuser:
+        episode = get_object_or_404(Sode, slug=slug, mp3__isnull=False)
+    else:
+        episode = get_object_or_404(Sode, slug=slug, mp3__isnull=False, date__lte=datetime.now())
+        
     return render_to_response(template_name, {"episode": episode}, context_instance=RequestContext(request))
