@@ -20,7 +20,9 @@ class SodeAdmin(admin.ModelAdmin):
         
     if getters.show_duration():
         fields.append("duration")
-        
+    
+    list_display = ["get_cat_chron", "title", "date"]
+    list_display_links = ["title"]
 
 admin.site.register(Category)
 admin.site.register(Sode, SodeAdmin)

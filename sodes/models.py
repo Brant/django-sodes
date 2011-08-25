@@ -125,6 +125,13 @@ class Sode(models.Model):
         get_latest_by = 'date'
         verbose_name_plural = 'Episodes'
         verbose_name = "Episode"
+     
+    def get_cat_chron(self):
+        """
+        Return a compiled category / chronology
+        """
+        return "%s %s" % (self.category, self.chronology)
+    get_cat_chron.short_description = "" 
         
     @models.permalink
     def get_absolute_url(self):
