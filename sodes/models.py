@@ -67,6 +67,9 @@ class Sode(models.Model):
     
     duration = models.CharField(max_length=30, blank=True, null=True)
     
+    def is_published(self):
+        return self.date <= datetime.now()
+    
     def __unicode__(self):
         return self.title
     
