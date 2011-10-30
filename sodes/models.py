@@ -68,6 +68,13 @@ class Sode(models.Model):
     duration = models.CharField(max_length=30, blank=True, null=True)
     
     def is_published(self):
+        """
+        Episodes publish once the "date" is less than or equal to the current datetime.now
+        
+        Future dating allows episodes to be viewable to logged in staff members but not the public
+        
+        This method provides a shortcut so that it can be determined easily in the template
+        """
         return self.date <= datetime.now()
     
     def __unicode__(self):
