@@ -37,13 +37,13 @@ class Category(models.Model):
         """
         verbose_name_plural = "Categories"
         ordering = ['name']
-    
-    @models.permalink
-    def get_absolute_url(self):
-        """
-        Django permalink
-        """
-        return ('entry_machine.views.category',[self.slug])
+#    
+#    @models.permalink
+#    def get_absolute_url(self):
+#        """
+#        Django permalink
+#        """
+#        return ('entry_machine.views.category',[self.slug])
 
 class Sode(models.Model):
     """
@@ -149,9 +149,9 @@ class Sode(models.Model):
         Django permalink
         """
         if getters.use_slugs_for_url():
-            return ("sodes.views.single_by_slug", [str(self.slug)])
+            return ("sodes_single", [str(self.slug)])
         else:
-            return ("sodes.views.single_by_category", [str(self.category.slug), str(self.chronology)])
+            return ("sodes_single", [str(self.category.slug), str(self.chronology)])
         
     def save(self, *args, **kwargs):
         """
