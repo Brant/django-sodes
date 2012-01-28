@@ -4,6 +4,7 @@ Django-sodes models
 import os
 from datetime import datetime, timedelta
 
+from django.db.models import Q
 from django.db import models
 from django.core.exceptions import ObjectDoesNotExist
 from django.template.defaultfilters import slugify
